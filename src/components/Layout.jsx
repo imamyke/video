@@ -1,10 +1,16 @@
-const Layout = ({children})=>{
-  return(<div>
-    <div>
-      <p>layout</p>
-    </div>  
-    {children}
-  </div>
+import Header from "./Header"
+import Sidebar from "./SideBar"
+import { Outlet } from 'react-router-dom'
+
+const Layout = ()=>{
+  return(
+    <div className="bg-black text-white">
+      <Header />
+      <Sidebar />
+      <div className="ml-[240px] pt-[72px] min-h-screen">
+        <Outlet />
+      </div>
+    </div>
   )
 }
 
