@@ -26,7 +26,7 @@ const artistsURL = artistsID.map(id => (
 const dancerData =[
   {
     name:"Snow",
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbkWeeDgI4L5fyqCaVRKa-P2AEUkPemdpehw&s",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1XNDUNNkbkUxrHrnzAN370w2htt8_uanHg&s",
     style:"Popping",
     channelId:"UCHeVKE-n20VTJ7DN4Ehb_4A"
   },
