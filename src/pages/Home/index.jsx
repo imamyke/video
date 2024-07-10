@@ -8,6 +8,7 @@ import { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Dancer from "../../components/Dancer"
 
+//影片ID
 const artistsID = [
   '-GQg25oP0S4',
   'xQ635vE2RQI',
@@ -17,7 +18,7 @@ const artistsID = [
   '3QTf7I-qnyY'
 ]
 
-
+//完整的url
 const artistsURL = artistsID.map(id => (
   `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet`
 ))
@@ -55,14 +56,16 @@ const dancerURL = dancerData.map(item => (
 ))
 
 
-
+//透過api取回資料
 const getArtist = async(url) =>{
   return await axios.get(url)
 }
+
 const Home = () => {
-  const navigate = useNavigate()
-  const[coverData, setCoverData] = useState([])
+  const navigate = useNavigate() //跳轉頁面
+  const[coverData, setCoverData] = useState([])//宣告一個coverData儲存狀態
   
+  //
   useEffect(() => {
     Promise.all([
       getArtist(artistsURL[0]),
@@ -92,12 +95,12 @@ const Home = () => {
     ]).then(res => {
       const DCdata = []
       for (const item of res) {
-        DCdata.push(item.data.items[0].snippet)
+        DCdata.push(item.data.items[0])
       }
       console.log(DCdata);
       setDancerData(DCdata)
     })
-  }, [])
+  }, [])//?????????
 
   const danceStyle = [
     'Popping',

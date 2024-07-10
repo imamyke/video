@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, Login, NotFound,Channel} from "@/pages";
+import { Home, Login, NotFound,Channel ,Video} from "@/pages";
 import Layout from "@/components/Layout";
 
 const router = createBrowserRouter([
@@ -14,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: '/channel/:id',
         element: <Channel />
+      },
+      {
+        path: '/video/:id',
+        element: <Video />
       },
       {
         path: '*',

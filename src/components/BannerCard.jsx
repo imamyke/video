@@ -1,6 +1,6 @@
 const BannerCard = ({title, describe, image, onClick }) =>{
   return(
-    <div className="relative w-[600px] h-[360px] rounded-2xl overflow-hidden" onClick={onClick}>
+    <div className="pt-4 relative w-[600px] h-[360px] rounded-2xl overflow-hidden" onClick={onClick}>
           <div className="absolute top-3 left-5">
             <i className="fa-solid fa-star"></i>
             <i className="fa-solid fa-star"></i>
