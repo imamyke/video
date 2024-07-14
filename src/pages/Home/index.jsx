@@ -126,26 +126,26 @@ const Home = () => {
 
   return (
     <>
-    <h4 className="">熱門舞風</h4>
-    <div className="">
+    <h4 className="mt-1">熱門舞風</h4>
+    <div className="mt-2">
       {danceStyle.map((dance, idx) =>(
         <button key={idx} className="py-2 px-3 border-2 border-white border-solid rounded-lg mr-12 last:mr-0">
           {dance}
         </button>
       ))}
     </div>
-    <h4 className="title">舞者</h4>
-    <div className="flex">
+    <h4 className="mt-5 ">舞者</h4>
+    <div className="flex mt-2">
       {dancerData.map(item => (
         <Dancer key={item.name} image={item.image} name={item.name} style={item.style} onClick={() => navigate(`/channel/${item.channelId}`)} />
       ))}
     </div>
-    <h4 className="title">特色話題</h4>
-    <div className="w-[300px] border">
+    <h4 className="mt-5">特色話題</h4>
+    <div className="w-[300px] mt-2 border">
         <img src={boogieTie} className="w-full h-[150px] object-cover rounded-xl"/>
         <h2 className="mt-3 whitespace-nowrap overflow-hidden text-ellipsis">這就是街舞爆料阿啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</h2>
     </div>
-    <h4 className="">本週熱門</h4>
+    <h4 className="mt-5">本週熱門</h4>
     <BannerCard title={data.title} image={data.image} describe={data.describe}/>
       {coverData.map(data => (
         <BannerCard title={data.channelTitle} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/channel/${data.channelId}`)} />
