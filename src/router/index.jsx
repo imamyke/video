@@ -20,15 +20,16 @@ const router = createBrowserRouter([
         element: <Video />
       },
       {
-        path: '*',
-        element: <NotFound />
+        path: '/login',
+        element: <Login />
       },
     ]
   },
   {
-    path: '/login',
-    element: <Login />
+    path: '*',
+    element: <NotFound />
   },
+  
 ])
 
 export default router

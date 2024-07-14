@@ -1,8 +1,10 @@
 import logo from "@/assets/images/flat-icon-people-bboy-dance-set-isolated-on-white-background-free-vector.png"
 
+
+
 const Header = () => {
   return(
-    <header className="fixed top-0 w-full z-10 h-[72px] bg-white text-black  text-xl header">
+  <header className="fixed top-0 w-full z-10 h-[72px] bg-white text-black  text-xl header">
     <div className='px-5 py-3'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
