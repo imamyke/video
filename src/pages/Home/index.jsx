@@ -81,8 +81,8 @@ const Home = () => {
       for (const item of res) {
         data.push(item.data.items[0].snippet)
       }
-      console.log(data);
       setCoverData(data)
+      console.log(data);
     })
   }, [])
 
@@ -124,7 +124,7 @@ const Home = () => {
     </div>
     <h4 className="mt-5">本週熱門</h4>
       {coverData.map(data => (
-        <BannerCard title={data.channelTitle} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/channel/${data.channelId}`)} />
+        <BannerCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
       ))}
   </>
   )

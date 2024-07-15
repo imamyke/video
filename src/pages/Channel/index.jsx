@@ -19,9 +19,7 @@ const navigate = useNavigate()
     const playListId = channelData.items[0].contentDetails.relatedPlaylists.uploads
     const { data: playList } = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playListId}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet,contentDetails,status&maxResults=6`)
     setCoverData(playList.items)
-    console.log(channelData)
-    console.log(playList.items)
-    console.log(id)//頻道id
+    console.log(playList.items[0].snippet.channelTitle)
   }
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const navigate = useNavigate()
     <div className="flex mt-4 border-b border-solid border-sidebarBorder pb-2">
       <img src={snow.image} className=" w-[250px] h-[250px] rounded-full" />
       <div className="pl-6">
-        <p className="text-[50px]">{snow.ChannelName}</p>
+        <p className="text-[50px]">{}</p>
         <span className="pl-5">訂閱數 : 1000</span>
         <span className="pl-5">影片數 : 200</span>
         <p></p>
@@ -40,7 +38,7 @@ const navigate = useNavigate()
     </div>
     <div className="text-white mt-4">
       {coverData.map(data => (
-        <BannerCard title={data.snippet.channelTitle} image={data.snippet.thumbnails.maxres?.url} describe={data.snippet.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
+        <BannerCard title={data.snippet.title} image={data.snippet.thumbnails.maxres?.url} describe={data.snippet.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
       ))}
     </div>
   </>

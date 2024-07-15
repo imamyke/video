@@ -8,7 +8,6 @@ const Video = () => {
   const [coverData, setCoverData] = useState([])
   const navigate = useNavigate()
 
-
   const { id } = useParams()
   console.log(id)
   return(
