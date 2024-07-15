@@ -17,7 +17,7 @@ const Login=()=>{
           className="px-2 py-1 w-56 text-black rounded bg-gray-100 focus:outline-0"
         />
       </div>
-      <button className="px-3 py-2 text-[22px] mt-6 border border-solid border-white rounded-lg" >登錄</button>
+      <button className="px-3 py-2 text-[22px] mt-6 border border-solid border-white rounded-lg hover:bg-slate-500" >登錄</button>
     </form>
   </>
   )

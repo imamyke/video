@@ -1,8 +1,10 @@
 import logo from "@/assets/images/flat-icon-people-bboy-dance-set-isolated-on-white-background-free-vector.png"
-
+import { useNavigate } from "react-router-dom"
 
 
 const Header = () => {
+  const navigate = useNavigate()
+
   return(
   <header className="fixed top-0 w-full z-10 h-[72px] bg-white text-black  text-xl header">
     <div className='px-5 py-3'>
@@ -17,7 +19,7 @@ const Header = () => {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <button className="login">
+          <button className="login" onClick={()=>navigate(`/login`)}>
             <i className="fa-solid fa-circle-user text-3xl"></i>
           </button>
         </div>

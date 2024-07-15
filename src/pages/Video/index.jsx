@@ -15,7 +15,7 @@ const Video = () => {
             <p className="text-[25px]">頻道名</p>
             <p className="text-[15px] text-gray-500">訂閱數</p>
           </div>
-          <i className="fa-regular fa-thumbs-up w-[100px] h-[40px] text-2xl pl-[7px] ml-[300px] mt-[10px] border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor"></i>
+          <i className="fa-regular fa-bell w-[100px] h-[42px] text-2xl pl-[8px] pt-1  ml-[300px] mt-[10px] border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor">訂閱</i>
       </div>
       <div className="mt-[40px] flex">
         <img src={boy} className="rounded-full w-[70px] h-[70px]"/>
@@ -30,8 +30,8 @@ const Video = () => {
           <p>ㄢㄤ不分 還是要當碗路霜民！</p>
           <p className=" text-slate-400"> 這有很厲害嗎？我啊罵在公園跳的更好😗</p> 
           <div className="flex pt-2">
-            <i class="fa-solid fa-thumbs-up pl-[100px]"></i>
-            <i class="fa-solid fa-thumbs-down pl-[20px]"></i>
+            <i className="fa-solid fa-thumbs-up pl-[100px]"></i>
+            <i className="fa-solid fa-thumbs-down pl-[20px]"></i>
             <button className="text-[12px] pl-[20px]">回覆</button>
           </div>
         </div>
