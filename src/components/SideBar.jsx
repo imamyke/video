@@ -1,4 +1,5 @@
 import SidebarButton from "@/components/SidebarButton"
+import { useNavigate } from "react-router-dom"
 
 const contentList = [
   {
@@ -16,10 +17,11 @@ const contentList = [
 ]
 
 const SideBar = () => {
+  const navigate = useNavigate()
   return(
     <div className="p-5 fixed top-[72px] left-0">
       <div className="w-[200px] border-b border-solid border-sidebarBorder pb-2">
-        <button className="flex justify-start w-full items-center p-2 rounded-md hover:bg-sidebarButtonColor">
+        <button className="flex justify-start w-full items-center p-2 rounded-md hover:bg-sidebarButtonColor " onClick={()=>navigate(`/`)}>
           <i className="fa-solid fa-house mr-3"></i>
           <span>首頁</span>
         </button>

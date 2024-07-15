@@ -20,6 +20,8 @@ const navigate = useNavigate()
     const { data: playList } = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playListId}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet,contentDetails,status&maxResults=6`)
     setCoverData(playList.items)
     console.log(channelData)
+    console.log(playList.items)
+    console.log(id)//頻道id
   }
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const navigate = useNavigate()
     </div>
     <div className="text-white mt-4">
       {coverData.map(data => (
-        <BannerCard title={data.snippet.channelTitle} image={data.snippet.thumbnails.maxres?.url} describe={data.snippet.description} onClick={() => navigate(`/channel/${data.snippet.channelId}`)} />
+        <BannerCard title={data.snippet.channelTitle} image={data.snippet.thumbnails.maxres?.url} describe={data.snippet.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
       ))}
     </div>
   </>

@@ -1,12 +1,20 @@
 import boy from "@/assets/images/boy.jpg"
 import big from "@/assets/images/big.jpg"
+import { useParams, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+
 
 const Video = () => {
+  const [coverData, setCoverData] = useState([])
+  const navigate = useNavigate()
 
+
+  const { id } = useParams()
+  console.log(id)
   return(
     <>
       <div>
-       <iframe width="700" height="394" src="https://www.youtube.com/embed/NvKF4zT0exA?si=ALZap13bgovZv-Y4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       <iframe width="700" height="394" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
        <p className="text-[30px] pt-2">video title</p>
       </div>
       <div className="flex w-full mt-3">
