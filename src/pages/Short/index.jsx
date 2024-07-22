@@ -22,7 +22,7 @@ const contentList = [
 const Short = () =>{
   return(
     <div className="flex justify-center ">
-      <div className=" w-[350px] h-[622px] bg-slate-400">
+      <div className=" w-[350px] h-[622px] bg-slate-400 mt-2">
 
       </div>
       <div className=" w-[72px] h-[484px] mt-[138px]">
