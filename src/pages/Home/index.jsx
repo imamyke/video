@@ -10,6 +10,13 @@ import {picture} from "@/assets/images/picture"
 console.log(picture)
 const{dreamer , leTwins, yiBO} = picture
 
+const danceStyle = [
+  'Popping',
+  'Locking',
+  'Wacking',
+  'HipHop'
+]
+
 //影片ID
 const artistsID = [
   '-GQg25oP0S4',
@@ -86,12 +93,6 @@ const Home = () => {
     })
   }, [])
 
-  const danceStyle = [
-    'Popping',
-    'Locking',
-    'Wacking',
-    'HipHop'
-  ]
 
   //const getChannel = async() => {
   //  const data = await YTApi.getChannel()

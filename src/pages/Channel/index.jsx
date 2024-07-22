@@ -34,6 +34,7 @@ const navigate = useNavigate()
         <span className="pl-5">訂閱數 : 1000</span>
         <span className="pl-5">影片數 : 200</span>
         <p></p>
+        <i className="fa-regular fa-bell w-[100px] h-[42px] text-2xl pl-[8px] pt-1  ml-[250px] mt-[150px] border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor cursor-pointer">訂閱</i>
       </div>
     </div>
     <div className="text-white mt-4">
