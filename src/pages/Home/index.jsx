@@ -1,5 +1,9 @@
 
 import boogieTie from "@/assets/images/boogie tie.jpeg"
+import yi from "@/assets/images/yi.jpeg"
+import talkSnow from "@/assets/images/talk snow.jpeg"
+import talkLockingHistory from "@/assets/images/talkLockHistory.jpeg"
+import talkBeigow from "@/assets/images/beigow.jpeg"
 import BannerCard from "@/components/BannerCard"
 import axios from "axios"
 import { useState,useEffect } from "react"
@@ -24,11 +28,11 @@ const danceStyle = [
 //影片ID
 const artistsID = [
   '-GQg25oP0S4',
-  'xQ635vE2RQI',
-  'PQjovLrnvVo',
+  'Fvx76LPfjhI',
+  'hu5RAPOmjYc',
   'AvbdItgxgNw',
   '5sT20edl02I',
-  '3QTf7I-qnyY'
+  'LTR8qVXXIwQ'
 ]
 
 //完整的url
@@ -71,23 +75,23 @@ const topics = [
   },
   {
     id: 2,
-    title:'這就是街舞爆料RRRRRRRRRRR',
-    image: boogieTie
+    title:'我認真solo起來，連我自己都怕',
+    image: yi
   },
   {
     id: 3,
-    title:'這就是街舞爆料RRRRRRRRRRR',
-    image: boogieTie
+    title:'『Like? Unlike? 都給我尬起來』',
+    image: talkSnow
   },
   {
     id: 4,
-    title:'這就是街舞爆料RRRRRRRRRRR',
-    image: boogieTie
+    title:'『來聊聊台灣Locking歷史吧』',
+    image: talkLockingHistory 
   },
   {
     id: 5,
-    title:'這就是街舞爆料RRRRRRRRRRR',
-    image: boogieTie
+    title:'ft.Beigow『你各位有什麼想問的快問～』',
+    image: talkBeigow
   }
 ]
 
