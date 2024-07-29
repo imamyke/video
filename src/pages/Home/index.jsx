@@ -4,8 +4,12 @@ import BannerCard from "@/components/BannerCard"
 import axios from "axios"
 import { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import Dancer from "../../components/Dancer"
+import Dancer from "@/components/Dancer"
 import {picture} from "@/assets/images/picture"
+import TopicCard from "@/components/TopicCard"
+import Swiper from "@/components/Swiper/index.jsx"
+import { SwiperSlide } from 'swiper/react';
+
 
 console.log(picture)
 const{dreamer , leTwins, yiBO} = picture
@@ -57,7 +61,34 @@ const dancerData =[
     style:"All Style",
     channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
   }
+]
 
+const topics = [
+  {
+    id: 1,
+    title:'這就是街舞爆料RRRRRRRRRRR',
+    image: boogieTie
+  },
+  {
+    id: 2,
+    title:'這就是街舞爆料RRRRRRRRRRR',
+    image: boogieTie
+  },
+  {
+    id: 3,
+    title:'這就是街舞爆料RRRRRRRRRRR',
+    image: boogieTie
+  },
+  {
+    id: 4,
+    title:'這就是街舞爆料RRRRRRRRRRR',
+    image: boogieTie
+  },
+  {
+    id: 5,
+    title:'這就是街舞爆料RRRRRRRRRRR',
+    image: boogieTie
+  }
 ]
 
 const dancerURL = dancerData.map(item => (
@@ -86,7 +117,7 @@ const Home = () => {
     ]).then(res => {
       const data = []
       for (const item of res) {
-        data.push(item.data.items[0].snippet)
+        data.push({...item.data.items[0].snippet, videoId:item.data.items[0].id})
       }
       setCoverData(data)
       console.log(data);
@@ -119,13 +150,16 @@ const Home = () => {
       ))}
     </div>
     <h4 className="mt-5">特色話題</h4>
-    <div className="w-[300px] mt-2 border">
-        <img src={boogieTie} className="w-full h-[150px] object-cover rounded-xl"/>
-        <h2 className="mt-3 whitespace-nowrap overflow-hidden text-ellipsis">這就是街舞爆料阿啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</h2>
-    </div>
+    <Swiper>
+        {topics.map(item => (
+          <SwiperSlide key={item.id} className="w-[300px]">
+            <TopicCard title={item.title} image={item.image} />
+          </SwiperSlide>
+        ))}
+    </Swiper>
     <h4 className="mt-5">本週熱門</h4>
       {coverData.map(data => (
-        <BannerCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
+        <BannerCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
       ))}
   </>
   )

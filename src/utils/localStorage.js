@@ -1,7 +1,7 @@
-export const setStorageToken = (setToken)=>{
-  localStorage.setItem("Blog-Token",token)
+export const setStorageToken = (token)=>{
+  localStorage.setItem("GW-Token",token)
 }
 
-export const getStorageToken  = (setToken)=>{
-  return localStorage.setItem("Blog-Token",token)
+export const getStorageToken  = (token)=>{
+  return localStorage.getItem("GW-Token") || ''
 }
