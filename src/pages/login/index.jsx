@@ -31,9 +31,9 @@ const Login=()=>{
 
   useEffect(()=>{
     if(token){
-      goToHome
+      goToHome()
     }
-  },[])
+  },[token])
 
   return(
   <>

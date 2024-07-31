@@ -13,16 +13,19 @@ import {picture} from "@/assets/images/picture"
 import TopicCard from "@/components/TopicCard"
 import Swiper from "@/components/Swiper/index.jsx"
 import { SwiperSlide } from 'swiper/react';
+import { useVideoStore } from "@/store/video"
 
 
-console.log(picture)
+//console.log(picture)
 const{dreamer , leTwins, yiBO} = picture
 
 const danceStyle = [
   'Popping',
   'Locking',
   'Wacking',
-  'HipHop'
+  'HipHop',
+  'Krump',
+  'Breaking'
 ]
 
 //影片ID
@@ -49,7 +52,7 @@ const dancerData =[
   },
   {
     name:"築夢者",
-    image:{dreamer},
+    image:{},
     style:"Breaking",
     channelId:"UC1NtiocEoZM5X6CTgOGMElw"
   },
@@ -107,10 +110,10 @@ const getArtist = async(url) =>{
 
 const Home = () => {
   const navigate = useNavigate() //跳轉頁面
-  const[coverData, setCoverData] = useState([])//宣告一個coverData儲存狀態
-  
+  const { hotVideos, setHotVideos} = useVideoStore()
   //
   useEffect(() => {
+    if(!hotVideos.length){
     Promise.all([
       getArtist(artistsURL[0]),
       getArtist(artistsURL[1]),
@@ -123,18 +126,10 @@ const Home = () => {
       for (const item of res) {
         data.push({...item.data.items[0].snippet, videoId:item.data.items[0].id})
       }
-      setCoverData(data)
-      console.log(data);
+      setHotVideos(data)
     })
+    }
   }, [])
-
-
-  //const getChannel = async() => {
-  //  const data = await YTApi.getChannel()
-  //  console.log(data)
-  //}
-
-  //axios.get("").then(res => console.log(res))
 
 
   return (
@@ -146,6 +141,7 @@ const Home = () => {
           {dance}
         </button>
       ))}
+      <button><i class="fa-solid fa-ellipsis"></i></button>
     </div>
     <h4 className="mt-5 ">舞者</h4>
     <div className="flex mt-2">
@@ -162,8 +158,8 @@ const Home = () => {
         ))}
     </Swiper>
     <h4 className="mt-5">本週熱門</h4>
-      {coverData.map(data => (
-        <BannerCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
+      {hotVideos.map(data => (
+        <BannerCard id={data.videoId} title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
       ))}
   </>
   )
