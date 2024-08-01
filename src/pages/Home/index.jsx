@@ -14,10 +14,13 @@ import TopicCard from "@/components/TopicCard"
 import Swiper from "@/components/Swiper/index.jsx"
 import { SwiperSlide } from 'swiper/react';
 import { useVideoStore } from "@/store/video"
+import { videoApi } from "../../api/module/video"
 
 
 //console.log(picture)
 const{dreamer , leTwins, yiBO} = picture
+
+console.log(videoApi.getVideos())
 
 const danceStyle = [
   'Popping',
@@ -98,9 +101,6 @@ const topics = [
   }
 ]
 
-const dancerURL = dancerData.map(item => (
-  `https://www.googleapis.com/youtube/v3/videos?id=${item.videoId}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet`
-))
 
 
 //透過api取回資料
@@ -135,7 +135,7 @@ const Home = () => {
 
   return (
     <>
-    <h4 className="mt-1">熱門舞風</h4>
+    <h4 className="mt-1 font-bold">熱門舞風</h4>
     <div className="mt-2">
       {danceStyle.map((dance, idx) =>(
         <button key={idx} className="py-2 px-3 border-2 border-white border-solid rounded-lg mr-12 last:mr-0">
@@ -144,24 +144,26 @@ const Home = () => {
       ))}
       <button><i class="fa-solid fa-ellipsis"></i></button>
     </div>
-    <h4 className="mt-5 ">舞者</h4>
+    <h4 className="mt-5 font-bold">舞者</h4>
     <div className="flex mt-2">
       {dancerData.map(item => (
         <Dancer key={item.name} image={item.image} name={item.name} style={item.style} onClick={() => navigate(`/channel/${item.channelId}`)} />
       ))}
     </div>
-    <h4 className="mt-5">特色話題</h4>
+    <h4 className="mt-5 font-bold">特色話題</h4>
     <Swiper>
         {topics.map(item => (
-          <SwiperSlide key={item.id} className="w-[300px]">
+          <SwiperSlide key={item.id} className="w-[300px] ">
             <TopicCard title={item.title} image={item.image} />
           </SwiperSlide>
         ))}
     </Swiper>
-    <h4 className="mt-5">本週熱門</h4>
+    <h4 className="mt-5 font-bold">本週熱門</h4>
+    <div className="flex flex-wrap">
       {hotVideos.map(data => (
         <BannerCard id={data.videoId} title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
       ))}
+    </div>
   </>
   )
 }

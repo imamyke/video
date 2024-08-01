@@ -22,9 +22,9 @@ const LikeIcon = ({ id, className }) => {
     <div onClick={handleLike} className={className}>
       {
         LikeStatus ? (
-          <i className="fa-solid fa-heart "></i>
+          <i className="fa-solid fa-heart text-[20px]"></i>
         ):(
-          <i className="fa-regular fa-heart "></i>
+          <i className="fa-regular fa-heart text-[20px]"></i>
         )
       }
     </div>

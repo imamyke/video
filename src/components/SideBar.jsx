@@ -33,7 +33,7 @@ const SideBar = () => {
          <span>短片</span>
        </button>
       </div>
-      <h3 className="pt-2">你的內容</h3>
+      <h3 className="pt-2 font-bold">你的內容</h3>
       <div className="flex flex-col w-[200px] border-b border-solid border-sidebarBorder pb-2">
       {contentList.map(item => (
             <SidebarButton key={item.title} icon={item.icon} onClick={()=>navigate(`/${item.path}`)}>
@@ -41,7 +41,7 @@ const SideBar = () => {
             </SidebarButton>
           ))}
       </div>
-      <h3 className="pt-2">訂閱內容</h3>
+      <h3 className="pt-2 font-bold">訂閱內容</h3>
     </div>
   )
 }
