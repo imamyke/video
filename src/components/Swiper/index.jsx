@@ -21,7 +21,7 @@ const MySwiper = ({ children }) => {
       }}
       pagination={true}
       modules={[EffectCoverflow, Pagination]}
-      className="mySwiper mr-28"
+      className="mySwiper mr-40"
     >
       {children}
     </Swiper>

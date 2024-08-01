@@ -131,6 +131,7 @@ const Home = () => {
     }
   }, [])
 
+  console.log(hotVideos)
 
   return (
     <>
