@@ -9,18 +9,17 @@ import axios from "axios"
 import { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Dancer from "@/components/Dancer"
-import {picture} from "@/assets/images/picture"
 import TopicCard from "@/components/TopicCard"
 import Swiper from "@/components/Swiper/index.jsx"
+import GrabCursor from "@/components/Swiper/grabCursor.jsx"
 import { SwiperSlide } from 'swiper/react';
 import { useVideoStore } from "@/store/video"
 import { videoApi } from "../../api/module/video"
 
 
-//console.log(picture)
-const{dreamer , leTwins, yiBO} = picture
 
-console.log(videoApi.getVideos())
+
+videoApi.getVideos().then(data => {console.log(data)})
 
 const danceStyle = [
   'Popping',
@@ -28,7 +27,9 @@ const danceStyle = [
   'Wacking',
   'HipHop',
   'Krump',
-  'Breaking'
+  'Breaking',
+  'Tutting',
+  'House'
 ]
 
 //影片ID
@@ -55,22 +56,40 @@ const dancerData =[
   },
   {
     name:"築夢者",
-    image:{},
+    image:'',
     style:"Breaking",
     channelId:"UC1NtiocEoZM5X6CTgOGMElw"
   },
   {
     name:"Les Twins",
-    image:{leTwins},
+    image:'',
     style:"Hip Hop",
     channelId:"UCUkl1Yy2O0W0xNTqwpDjY9A"
   },
   {
     name:"一博",
-    image:{yiBO},
+    image:'',
     style:"All Style",
     channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
-  }
+  },
+  {
+    name:"二博",
+    image:'',
+    style:"All Style",
+    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
+  },
+  {
+    name:"三博",
+    image:'',
+    style:"All Style",
+    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
+  },
+  {
+    name:"黃博",
+    image:'',
+    style:"All Style",
+    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
+  },
 ]
 
 const topics = [
@@ -146,9 +165,13 @@ const Home = () => {
     </div>
     <h4 className="mt-5 font-bold">舞者</h4>
     <div className="flex mt-2">
+    <GrabCursor>
       {dancerData.map(item => (
-        <Dancer key={item.name} image={item.image} name={item.name} style={item.style} onClick={() => navigate(`/channel/${item.channelId}`)} />
+        <SwiperSlide>
+          <Dancer key={item.name} image={item.image} name={item.name} style={item.style} onClick={() => navigate(`/channel/${item.channelId}`)} />
+        </SwiperSlide>
       ))}
+    </GrabCursor>
     </div>
     <h4 className="mt-5 font-bold">特色話題</h4>
     <Swiper>
