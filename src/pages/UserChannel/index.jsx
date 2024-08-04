@@ -13,7 +13,7 @@ const UserChannel = () =>{
           <p className="text-[15px] text-gray-400 mt-2 w-[300px] h-[25px] overflow-hidden text-ellipsis">哈哈哈好哈啊好哈哈哈哈好哈啊好哈哈哈好哈啊好哈哈</p>
           <button className="text-[15px] mt-[6px]">...顯示更多</button>
         </div>
-        <i className="mt-8 fa-regular fa-bell w-[100px] h-[42px] text-2xl pl-[8px] pt-1  border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor cursor-pointer">訂閱</i>
+        <i className="mt-8 fa-regular fa-bell w-[100px] h-[42px] text-2xl pl-[8px] pt-1  border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor cursor-pointer"> 訂閱</i>
       </div>
     </div>
     <i className="mt-[20px] px-2 py-1 text-xl fa-light fa-plus border-b border-solid border-white hover:bg-sidebarButtonColor rounded-lg cursor-pointer">新增</i>
