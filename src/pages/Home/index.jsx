@@ -14,12 +14,7 @@ import Swiper from "@/components/Swiper/index.jsx"
 import GrabCursor from "@/components/Swiper/grabCursor.jsx"
 import { SwiperSlide } from 'swiper/react';
 import { useVideoStore } from "@/store/video"
-import { videoApi } from "../../api/module/video"
 
-
-
-
-videoApi.getVideos().then(data => {console.log(data)})
 
 const danceStyle = [
   'Popping',
@@ -161,7 +156,7 @@ const Home = () => {
           {dance}
         </button>
       ))}
-      <button><i class="fa-solid fa-ellipsis"></i></button>
+      <button><i className="fa-solid fa-ellipsis"></i></button>
     </div>
     <h4 className="mt-5 font-bold">舞者</h4>
     <div className="flex mt-2">
