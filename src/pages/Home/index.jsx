@@ -34,12 +34,12 @@ const danceStyle = [
 
 //影片ID
 const artistsID = [
-  '-GQg25oP0S4',
-  'Fvx76LPfjhI',
-  'hu5RAPOmjYc',
-  'AvbdItgxgNw',
-  '5sT20edl02I',
-  'LTR8qVXXIwQ'
+  'okUa4E-E3WQ',
+  't0seWNSEAbo',
+  'iRGh2EDQItc',
+  '9zcppYdmsfE',
+  'MjyGVx0aR5k',
+  'ZXXDkumks6M'
 ]
 
 //完整的url
@@ -73,10 +73,10 @@ const dancerData =[
     channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
   },
   {
-    name:"二博",
+    name:"kinjaz",
     image:'',
-    style:"All Style",
-    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
+    style:"urban",
+    channelId:"UCMiRRM8Mo7mmxemIs0OHEZA"
   },
   {
     name:"三博",
@@ -143,7 +143,7 @@ const Home = () => {
     ]).then(res => {
       const data = []
       for (const item of res) {
-        data.push({...item.data.items[0].snippet, videoId:item.data.items[0].id})
+        data.push({...item.data.items[0].snippet , videoId:item.data.items[0].id})
       }
       setHotVideos(data)
     })

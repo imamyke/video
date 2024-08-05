@@ -12,7 +12,7 @@ const Video = () => {
   console.log(id)
   return(
     <>
-      <div>
+      <div className="mt-2">
        <iframe width="700" height="394" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
        <p className="text-[30px] pt-2">video title</p>
       </div>
