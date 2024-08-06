@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const videoApi = {
+export const Api = {
   getVideos: async() =>{
     const { data } = await axios.get('/mock/videos')
     return data

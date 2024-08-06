@@ -14,7 +14,13 @@ import Swiper from "@/components/Swiper/index.jsx"
 import GrabCursor from "@/components/Swiper/grabCursor.jsx"
 import { SwiperSlide } from 'swiper/react';
 import { useVideoStore } from "@/store/video"
+import {Api} from "@/api/module/video.js"
 
+const getVidoesData = async() =>{
+  return await Api.getVideos()
+}
+
+getVidoesData().then((res) => console.log(res))
 
 const danceStyle = [
   'Popping',
@@ -29,12 +35,12 @@ const danceStyle = [
 
 //影片ID
 const artistsID = [
-  'okUa4E-E3WQ',
-  't0seWNSEAbo',
-  'iRGh2EDQItc',
-  '9zcppYdmsfE',
-  'MjyGVx0aR5k',
-  'ZXXDkumks6M'
+  'JzVECrLLTWw',
+  '08FycI_RFeo',
+  'Sl2qfvdroEA',
+  'laDu6VQT5Cg',
+  'AIUuhfprTqA',
+  'O_h5lRjwWro'
 ]
 
 //完整的url
