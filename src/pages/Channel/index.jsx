@@ -5,9 +5,12 @@ import ChannelVideoCard from "@/components/ChannelVideoCard"
 import { useEffect, useState } from "react"
 import { SwiperSlide } from 'swiper/react'
 import Swiper from "@/components/Swiper/manipulate.jsx"
+import { useVideoStore } from "@/store/video"
+import {Api} from "@/api/module/video.js"
 
 const Channel = () => {
 const [coverData, setCoverData] = useState([])
+const { channels, setChannels} = useVideoStore()
 const navigate = useNavigate()
 
  const snow = {
@@ -26,18 +29,27 @@ const navigate = useNavigate()
     console.log(playList.items[0].snippet)
   }
 
+  const getChannel1 = async() => {
+    Api.getChannels().then(res =>{
+      const channelDatas = res.data
+      const channelData = channelDatas.find(item => item.channelId === id)
+      setChannels(channelData)
+      console.log(channels.videos)
+    })
+  }
+
   useEffect(() => {
-    getChannel()
+    getChannel1()
   }, [])
   return (
   <>
-    <ChannelInfo title={snow.title} image={snow.image} SVnumber={snow.SVnumber} introduction={snow.introduction} />
+    <ChannelInfo title={channels.channelTitle} image={channels.channelImage} SVnumber={channels.SVnumber} introduction={channels.channelDescription} />
     <h4 className="mt-5 font-bold">為你推薦</h4>
     <div className="flex mt-4 border-b border-solid border-sidebarBorder pb-2">
       <Swiper >
-        {coverData.map(data => (
-        <SwiperSlide key={data.snippet.resourceId.videoId} className="w-[365px] " >
-          <ChannelVideoCard title={data.snippet.title} image={data.snippet.thumbnails.maxres?.url} describe={data.snippet.description} onClick={() => navigate(`/video/${data.snippet.resourceId.videoId}`)} />
+        {channels.videos.map(data => (
+        <SwiperSlide key={data.videoId} className="w-[365px] " >
+          <ChannelVideoCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
         </SwiperSlide>
         ))}
       </Swiper>
