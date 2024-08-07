@@ -13,23 +13,20 @@ const [coverData, setCoverData] = useState([])
 const { channels, setChannels} = useVideoStore()
 const navigate = useNavigate()
 
- const snow = {
-  title:"SnowPoppin",
-  image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1XNDUNNkbkUxrHrnzAN370w2htt8_uanHg&s",
-  SVnumber:"訂閱數 : 1000 ， 影片數 : 200",
-  introduction:"哈哈哈好哈啊好哈哈哈哈好哈啊好哈哈哈好哈啊好哈哈"
- }
 
   const { id } = useParams()
-  const getChannel = async() => {
-    const { data: channelData } = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=contentDetails`)
-    const playListId = channelData.items[0].contentDetails.relatedPlaylists.uploads
-    const { data: playList } = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playListId}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet,contentDetails,status&maxResults=6`)
-    setCoverData(playList.items)
-    console.log(playList.items[0].snippet)
-  }
+  /* // 以下是YouTube channel data 取法
 
-  const getChannel1 = async() => {
+  const getChannel = async() => {
+  const { data: channelData } = await axios.get(`https://www.googleapis.com/youtube/v3/channels?id=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=contentDetails`)
+  const playListId = channelData.items[0].contentDetails.relatedPlaylists.uploads
+  const { data: playList } = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${playListId}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet,contentDetails,status&maxResults=6`)
+  setCoverData(playList.items)
+  console.log(playList.items[0].snippet)
+  }
+  */
+
+  const getChannel = async() => {
     Api.getChannels().then(res =>{
       const channelDatas = res.data
       const channelData = channelDatas.find(item => item.channelId === id)
@@ -39,7 +36,7 @@ const navigate = useNavigate()
   }
 
   useEffect(() => {
-    getChannel1()
+    getChannel()
   }, [])
   return (
   <>

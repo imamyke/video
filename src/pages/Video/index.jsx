@@ -2,28 +2,34 @@ import boy from "@/assets/images/boy.jpg"
 import big from "@/assets/images/big.jpg"
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import {Api} from "@/api/module/video.js"
+import VideoChannelCard from "@/components/VideoChannelCard"
 
 
 const Video = () => {
   const [coverData, setCoverData] = useState([])
   const navigate = useNavigate()
-
   const { id } = useParams()
-  console.log(id)
+
+  const getVideo = ()=>{
+    Api.getVideos().then(res =>{
+      const videoData = res.data.find( item => item.videoId === id)
+      console.log(videoData)
+      setCoverData(videoData)
+    })
+  }
+ 
+  useEffect(()=>{
+    getVideo()
+  },[])
+
   return(
     <>
       <div className="mt-2">
        <iframe width="700" height="394" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-       <p className="text-[30px] pt-2">video title</p>
+       <p className="text-[20px] w-[700px] pt-2">{coverData.title}</p>
       </div>
-      <div className="flex w-full mt-3">
-          <img className=" w-[80px] h-[80px] rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1XNDUNNkbkUxrHrnzAN370w2htt8_uanHg&s"/>
-          <div className="pl-[40px]">
-            <p className="text-[25px]">頻道名</p>
-            <p className="text-[15px] text-gray-500">訂閱數</p>
-          </div>
-          <i className="fa-regular fa-bell w-[100px] h-[42px] text-2xl pl-[8px] pt-1  ml-[300px] mt-[10px] border border-solid border-white rounded-lg  hover:bg-sidebarButtonColor">訂閱</i>
-      </div>
+      <VideoChannelCard key={coverData.videoId} image={coverData.channelImage} title={coverData.channelTitle} sNumber={coverData.sNumber} onClick={() => navigate(`/channel/${coverData.channelId}`)} />
       <div className="mt-[40px] flex">
         <img src={boy} className="rounded-full w-[70px] h-[70px]"/>
         <div className="ml-8 ">
