@@ -16,12 +16,6 @@ import { SwiperSlide } from 'swiper/react';
 import { useVideoStore } from "@/store/video"
 import {Api} from "@/api/module/video.js"
 
-const getVidoesData = async() =>{
-  return await Api.getVideos()
-}
-
-getVidoesData().then((res) => console.log(res))
-
 const danceStyle = [
   'Popping',
   'Locking',
@@ -35,12 +29,12 @@ const danceStyle = [
 
 //影片ID
 const artistsID = [
-  'JzVECrLLTWw',
-  '08FycI_RFeo',
-  'Sl2qfvdroEA',
-  'laDu6VQT5Cg',
-  'AIUuhfprTqA',
-  'O_h5lRjwWro'
+  '5zIEHwTPGRA',
+  'w_QS5ZJLYWA',
+  'P8RSUJVCYsM',
+  'TvHtn-BP5YY',
+  'SS2p9MkU2fw',
+  'Te6NYSEAUsc'
 ]
 
 //完整的url
@@ -48,50 +42,6 @@ const artistsURL = artistsID.map(id => (
   `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc&part=snippet`
 ))
 
-const dancerData =[
-  {
-    name:"Snow",
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1XNDUNNkbkUxrHrnzAN370w2htt8_uanHg&s",
-    style:"Popping",
-    channelId:"UCHeVKE-n20VTJ7DN4Ehb_4A"
-  },
-  {
-    name:"築夢者",
-    image:'',
-    style:"Breaking",
-    channelId:"UC1NtiocEoZM5X6CTgOGMElw"
-  },
-  {
-    name:"Les Twins",
-    image:'',
-    style:"Hip Hop",
-    channelId:"UCUkl1Yy2O0W0xNTqwpDjY9A"
-  },
-  {
-    name:"一博",
-    image:'',
-    style:"All Style",
-    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
-  },
-  {
-    name:"kinjaz",
-    image:'',
-    style:"urban",
-    channelId:"UCMiRRM8Mo7mmxemIs0OHEZA"
-  },
-  {
-    name:"三博",
-    image:'',
-    style:"All Style",
-    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
-  },
-  {
-    name:"黃博",
-    image:'',
-    style:"All Style",
-    channelId:"UCWuGk9AJbjAtPQIf9hkMOOw"
-  },
-]
 
 const topics = [
   {
@@ -121,7 +71,9 @@ const topics = [
   }
 ]
 
-
+const getChannelsData = async() =>{
+  return await Api.getChannels()
+}
 
 //透過api取回資料
 const getArtist = async(url) =>{
@@ -131,8 +83,17 @@ const getArtist = async(url) =>{
 const Home = () => {
   const navigate = useNavigate() //跳轉頁面
   const { hotVideos, setHotVideos} = useVideoStore()
-  //
+  const { dancerCards, setDancerCards} = useVideoStore()
+
   useEffect(() => {
+    if(!dancerCards.length){
+      getChannelsData().then(res => {
+          const dancerData = res.data
+          setDancerCards(dancerData)
+        }
+      )
+    }
+
     if(!hotVideos.length){
     Promise.all([
       getArtist(artistsURL[0]),
@@ -152,6 +113,7 @@ const Home = () => {
   }, [])
 
   console.log(hotVideos)
+  console.log(dancerCards)
 
   return (
     <>
@@ -167,9 +129,9 @@ const Home = () => {
     <h4 className="mt-5 font-bold">舞者</h4>
     <div className="flex mt-2">
     <GrabCursor>
-      {dancerData.map(item => (
-        <SwiperSlide>
-          <Dancer key={item.name} image={item.image} name={item.name} style={item.style} onClick={() => navigate(`/channel/${item.channelId}`)} />
+      {dancerCards.map(item => (
+        <SwiperSlide className="w-[200px]">
+          <Dancer key={item.channelId} image={item.channelImage} name={item.channelTitle} style={item.danceStyle} onClick={() => navigate(`/channel/${item.channelId}`)} />
         </SwiperSlide>
       ))}
     </GrabCursor>

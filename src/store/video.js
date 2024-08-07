@@ -7,8 +7,8 @@ export const useVideoStore = create(
     (set) => ({
       hotVideos:[],
       setHotVideos:(videos) => set({ hotVideos: videos }),
-      collection:[],
-      setCollection:(newCollection) => set({ collection: newCollection })
+      dancerCards:[],
+      setDancerCards:(newDancerCard) => set({ dancerCards: newDancerCard })
     }),
     {
       name: 'video', 
