@@ -38,20 +38,20 @@ const navigate = useNavigate()
     getChannel()
   }, [])
   return (
-  <>
+  <div className="pl-3">
     <ChannelInfo title={channels.channelTitle} image={channels.channelImage} SVnumber={channels.SVnumber} introduction={channels.channelDescription} />
-    <h4 className="mt-5 font-bold">為你推薦</h4>
+    <h4 className="mt-3 font-bold">為你推薦</h4>
     <div className="flex mt-4 border-b border-solid border-sidebarBorder pb-2">
       <Swiper >
         {channels.videos.map(data => (
-        <SwiperSlide key={data.videoId} className="w-[365px] " >
+        <SwiperSlide key={data.videoId} >
           <ChannelVideoCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
         </SwiperSlide>
         ))}
       </Swiper>
     </div>
    
-  </>
+  </div>
   )
 }
 

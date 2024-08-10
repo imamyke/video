@@ -24,7 +24,7 @@ const Manipulate = ({ children }) =>{
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper h-[330px]"
       >
         { children }
       </Swiper>

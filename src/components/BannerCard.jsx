@@ -2,7 +2,7 @@ import LikeIcon from "./Likeicon.jsx"
 
 const BannerCard = ({title, describe, image, onClick, id }) =>{
   return(
-    <div className="relative m-5 w-[400px] h-[240px] rounded-2xl overflow-hidden cursor-pointer">
+    <div className="relative m-5 w-[400px] h-[240px] rounded-2xl overflow-hidden cursor-pointer  duration-200 hover:scale-105 ">
       <div >
           <div className="absolute top-3 left-5">
             <i className="fa-solid fa-star"></i>

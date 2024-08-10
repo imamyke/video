@@ -21,7 +21,7 @@ const GrabCursor = ({children})=> {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper mr-40 w-full"
+        className="mySwiper mr-40 w-full h-[180px]"
       >
         {children}
       </Swiper>
