@@ -5,13 +5,18 @@ import { useNavigate } from "react-router-dom"
 const Header = () => {
   const navigate = useNavigate()
 
+  const sideBarControll = () =>{
+    document.getElementById("sideBar").classList.toggle('-translate-x-full')
+
+  }
+
   return(
   <header className="fixed top-0 w-full z-10 h-[72px] bg-white text-black  text-xl header">
     <div className='px-5 py-3'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
-            <i className="fa-solid fa-list text-3xl mr-3"></i>
-            <img src={logo} className="h-12" />
+            <i className="fa-solid fa-list text-3xl mr-3 cursor-pointer" onClick={()=>sideBarControll()}></i>
+            <img src={logo} className="h-12 cursor-pointer" onClick={()=>navigate(`/`)} />
           </div>
           <div className='flex justify-center items-center'>
             <input className="border border-black border-solid focus:outline-none h-10 rounded mr-2 w-56 pl-3" />

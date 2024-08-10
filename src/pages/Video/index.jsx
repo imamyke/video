@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import {Api} from "@/api/module/video.js"
 import VideoChannelCard from "@/components/VideoChannelCard"
+import axios from "axios"
 
 
 const Video = () => {
@@ -11,16 +12,25 @@ const Video = () => {
   const navigate = useNavigate()
   const { id } = useParams()
 
+  console.log(id)
+
+  const getComment = async() =>{
+    const data =  await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc`);
+    console.log(data)
+  }
+
+
+
   const getVideo = ()=>{
     Api.getVideos().then(res =>{
       const videoData = res.data.find( item => item.videoId === id)
-      console.log(videoData)
       setCoverData(videoData)
     })
   }
  
   useEffect(()=>{
     getVideo()
+    getComment()
   },[])
 
   return(

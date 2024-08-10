@@ -9,7 +9,6 @@ import { useVideoStore } from "@/store/video"
 import {Api} from "@/api/module/video.js"
 
 const Channel = () => {
-const [coverData, setCoverData] = useState([])
 const { channels, setChannels} = useVideoStore()
 const navigate = useNavigate()
 
@@ -25,7 +24,7 @@ const navigate = useNavigate()
   console.log(playList.items[0].snippet)
   }
   */
-
+  
   const getChannel = async() => {
     Api.getChannels().then(res =>{
       const channelDatas = res.data

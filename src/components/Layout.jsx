@@ -7,7 +7,7 @@ const Layout = ()=>{
     <div className="bg-black text-white">
       <Header />
       <Sidebar />
-      <div className="ml-[240px] pt-[72px] min-h-screen">
+      <div className="ml-[20px] pt-[72px] min-h-screen">
         <Outlet />
       </div>
     </div>

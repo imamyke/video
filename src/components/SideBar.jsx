@@ -22,7 +22,7 @@ const contentList = [
 const SideBar = () => {
   const navigate = useNavigate()
   return(
-    <div className="p-5 fixed top-[72px] left-0">
+    <div id="sideBar" className="p-5 fixed top-[72px] left-0 -translate-x-full transform transition-transform duration-300 ease-in-out bg-black z-50 ">
       <div className="w-[200px] border-b border-solid border-sidebarBorder pb-2">
         <button className="flex justify-start w-full items-center p-2 rounded-md hover:bg-sidebarButtonColor " onClick={()=>navigate(`/`)}>
           <i className="fa-solid fa-house mr-3"></i>
