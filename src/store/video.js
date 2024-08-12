@@ -9,8 +9,6 @@ export const useVideoStore = create(
       setHotVideos:(videos) => set({ hotVideos: videos }),
       dancerCards:[],
       setDancerCards:(newDancerCard) => set({ dancerCards: newDancerCard }),
-      channels:[],
-      setChannels:(newChannel) => set({ channels: newChannel })
     }),
     {
       name: 'video', 

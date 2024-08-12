@@ -5,13 +5,11 @@ import ChannelVideoCard from "@/components/ChannelVideoCard"
 import { useEffect, useState } from "react"
 import { SwiperSlide } from 'swiper/react'
 import Swiper from "@/components/Swiper/manipulate.jsx"
-import { useVideoStore } from "@/store/video.js"
 import {Api} from "@/api/module/video.js"
 
 const Channel = () => {
-const { channels, setChannels} = useVideoStore()
+const [ channels, setChannels] = useState([])
 const navigate = useNavigate()
-
 
   const { id } = useParams()
   /* // 以下是YouTube channel data 取法
@@ -30,10 +28,16 @@ const navigate = useNavigate()
       const channelDatas = res.data
       console.log(channelDatas)
       const channelData = channelDatas.find(item => item.channelId === id)
+      console.log(channelData)
+      const data =[]
+      data.push(channelData)
+      console.log(data)
       setChannels(channelData)
-      console.log(channels.videos)
+      console.log(channels)
     })
   }
+
+  getChannel()
 
   useEffect(() => {
     getChannel()
