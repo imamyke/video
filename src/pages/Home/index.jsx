@@ -29,12 +29,12 @@ const danceStyle = [
 
 //影片ID
 const artistsID = [
+  '44VVUYCguTA',
   '5zIEHwTPGRA',
-  'w_QS5ZJLYWA',
-  'P8RSUJVCYsM',
-  'TvHtn-BP5YY',
-  'SS2p9MkU2fw',
-  'Te6NYSEAUsc'
+  'z9HGT7cht9o',
+  'YopuflviAuM',
+  'hu5RAPOmjYc&t=8s',
+  'TmJ-M5X89GQ'
 ]
 
 //完整的url
