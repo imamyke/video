@@ -8,7 +8,7 @@ import Swiper from "@/components/Swiper/manipulate.jsx"
 import {Api} from "@/api/module/video.js"
 
 const Channel = () => {
-const [ channels, setChannels] = useState([])
+const [ channel, setChannel] = useState([])
 const navigate = useNavigate()
 
   const { id } = useParams()
@@ -22,39 +22,30 @@ const navigate = useNavigate()
   console.log(playList.items[0].snippet)
   }
   */
-  
+
   const getChannel = async() => {
-    Api.getChannels().then(res =>{
-      const channelDatas = res.data
-      console.log(channelDatas)
-      const channelData = channelDatas.find(item => item.channelId === id)
-      console.log(channelData)
-      const data =[]
-      data.push(channelData)
-      console.log(data)
-      setChannels(channelData)
-      console.log(channels)
+    Api.getChannels().then(res => {
+      const channelData = res.data.find(item => item.channelId === id)
+      setChannel(channelData)
     })
   }
-
-  getChannel()
 
   useEffect(() => {
     getChannel()
   }, [])
   return (
   <div className="pl-3">
-    <ChannelInfo title={channels.channelTitle} image={channels.channelImage} SVnumber={channels.SVnumber} introduction={channels.channelDescription} />
+    <ChannelInfo title={channel.channelTitle} image={channel.channelImage} SVnumber={channel.SVnumber} introduction={channel.channelDescription} />
     <h4 className="mt-3 font-bold">為你推薦</h4>
     <div className="flex mt-4 border-b border-solid border-sidebarBorder pb-2">
-    <Swiper >
-        {channels.videos.map(data => (
+    <Swiper>
+        {channel?.videos?.map(data => (
         <SwiperSlide key={data.videoId} >
           <ChannelVideoCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
         </SwiperSlide>
         ))}
       </Swiper>
-    </div> 
+    </div>
   </div>
   )
 }
