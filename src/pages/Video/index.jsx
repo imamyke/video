@@ -4,19 +4,25 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import {Api} from "@/api/module/video.js"
 import VideoChannelCard from "@/components/VideoChannelCard"
+import CommentCard from "@/components/CommentCard"
 import axios from "axios"
 
 
 const Video = () => {
   const [coverData, setCoverData] = useState([])
+  const [commentsData, setCommentsData] = useState([])
   const navigate = useNavigate()
   const { id } = useParams()
 
-  console.log(id)
-
   const getComment = async() =>{
-    const data =  await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc`);
-    console.log(data)
+    const res =  await axios.get(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${id}&key=AIzaSyB6yEJercL6to8ROq9DFH2gUAJA0Xk1mCc`);
+    const arr = res.data.items
+    const data = []
+    for(const item of arr){
+      data.push({...item.snippet.topLevelComment.snippet})
+    }
+    setCommentsData(data)
+    console.log(commentsData)
   }
 
 
@@ -59,6 +65,9 @@ const Video = () => {
           </div>
         </div>
       </div>
+      {commentsData.map( item => (
+        <CommentCard id={item.authorChannelId} image={item.authorProfileImageUrl} name={item.authorDisplayName} text={item.textDisplay} />
+      ))}
     </>
 
   )

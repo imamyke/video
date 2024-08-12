@@ -13,7 +13,7 @@ import TopicCard from "@/components/TopicCard"
 import Swiper from "@/components/Swiper/index.jsx"
 import GrabCursor from "@/components/Swiper/grabCursor.jsx"
 import { SwiperSlide } from 'swiper/react';
-import { useVideoStore } from "@/store/video"
+import { useVideoStore } from "@/store/video.js"
 import {Api} from "@/api/module/video.js"
 
 const danceStyle = [

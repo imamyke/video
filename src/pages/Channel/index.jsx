@@ -5,7 +5,7 @@ import ChannelVideoCard from "@/components/ChannelVideoCard"
 import { useEffect, useState } from "react"
 import { SwiperSlide } from 'swiper/react'
 import Swiper from "@/components/Swiper/manipulate.jsx"
-import { useVideoStore } from "@/store/video"
+import { useVideoStore } from "@/store/video.js"
 import {Api} from "@/api/module/video.js"
 
 const Channel = () => {
@@ -28,6 +28,7 @@ const navigate = useNavigate()
   const getChannel = async() => {
     Api.getChannels().then(res =>{
       const channelDatas = res.data
+      console.log(channelDatas)
       const channelData = channelDatas.find(item => item.channelId === id)
       setChannels(channelData)
       console.log(channels.videos)
@@ -42,15 +43,14 @@ const navigate = useNavigate()
     <ChannelInfo title={channels.channelTitle} image={channels.channelImage} SVnumber={channels.SVnumber} introduction={channels.channelDescription} />
     <h4 className="mt-3 font-bold">為你推薦</h4>
     <div className="flex mt-4 border-b border-solid border-sidebarBorder pb-2">
-      <Swiper >
+    <Swiper >
         {channels.videos.map(data => (
         <SwiperSlide key={data.videoId} >
           <ChannelVideoCard title={data.title} image={data.thumbnails.maxres?.url} describe={data.description} onClick={() => navigate(`/video/${data.videoId}`)} />
         </SwiperSlide>
         ))}
       </Swiper>
-    </div>
-   
+    </div> 
   </div>
   )
 }
